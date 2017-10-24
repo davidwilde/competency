@@ -19,3 +19,8 @@ export const getBeersRejected = error => ({
   type: types.GET_BEERS_REJECTED,
   error
 });
+
+export const changeFilter = payload => ({
+  type: types.CHANGE_FILTER,
+  payload
+});

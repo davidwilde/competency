@@ -11,7 +11,8 @@ import * as types from "./types";
 export const initialState = fromJS({
   loading: false,
   error: false,
-  beers: undefined
+  beers: undefined,
+  filter: 0
 });
 
 const beerReducer = (state = initialState, action) => {
@@ -20,7 +21,8 @@ const beerReducer = (state = initialState, action) => {
       return state
         .set("loading", true)
         .set("error", false)
-        .set("beers", undefined);
+        .set("beers", undefined)
+        .set("filter", 0);
 
     case types.GET_BEERS_FULFILLED:
       return state
@@ -33,6 +35,9 @@ const beerReducer = (state = initialState, action) => {
         .set("loading", false)
         .set("error", action.error)
         .set("beers", undefined);
+
+    case types.CHANGE_FILTER:
+      return state.set("filter", action.payload);
 
     default:
       return state;
